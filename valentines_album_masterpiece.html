@@ -542,86 +542,184 @@
             transform-style: preserve-3d;
         }
 
-        .photo-frame.style-modern {
-            border: 6px solid rgba(255, 255, 255, 0.9);
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        /* Love Letter Frame - Vintage letter with wax seal */
+        .photo-frame.style-loveletter {
+            border: 18px solid #f5e6d3;
+            background:
+                linear-gradient(135deg, #fff9f0 0%, #f5e6d3 100%);
             box-shadow:
-                inset 0 0 30px rgba(0, 0, 0, 0.1),
-                0 15px 40px rgba(0, 0, 0, 0.2),
-                0 0 0 1px rgba(255, 255, 255, 0.5);
-        }
-
-        .photo-frame.style-polaroid {
-            border: 20px solid #fff;
-            border-bottom-width: 70px;
-            background: #fff;
-            box-shadow:
-                0 15px 50px rgba(0, 0, 0, 0.3),
-                inset 0 0 20px rgba(0, 0, 0, 0.05);
-            transform: rotate(-2deg);
-        }
-
-        .photo-frame.style-polaroid:hover {
-            transform: rotate(0deg);
-        }
-
-        .photo-frame.style-vintage {
-            border: 12px solid #8b7355;
-            background: linear-gradient(135deg, #d4a373, #c39e81);
-            box-shadow:
-                inset 0 0 40px rgba(0, 0, 0, 0.3),
-                inset 0 0 0 1px rgba(139, 115, 85, 0.5),
-                0 20px 50px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-        }
-
-        .photo-frame.style-vintage::before {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: -12px;
-            right: -12px;
-            bottom: -12px;
-            border: 2px solid rgba(139, 115, 85, 0.3);
-            border-radius: 5px;
-            pointer-events: none;
-        }
-
-        .photo-frame.style-ornate {
-            border: 15px solid #8b6914;
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            box-shadow:
-                inset 0 0 30px rgba(218, 165, 32, 0.4),
-                0 20px 60px rgba(0, 0, 0, 0.3);
+                inset 0 0 60px rgba(139, 89, 42, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.25),
+                0 0 0 2px rgba(139, 89, 42, 0.2);
+            border-radius: 8px;
             position: relative;
         }
 
-        .photo-frame.style-ornate::before {
-            content: '';
+        .photo-frame.style-loveletter::before {
+            content: '❤';
             position: absolute;
-            top: -18px;
-            left: -18px;
-            right: -18px;
-            bottom: -18px;
-            background:
-                linear-gradient(45deg, transparent 48%, #ffd700 48%, #ffd700 52%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, #ffd700 48%, #ffd700 52%, transparent 52%);
-            background-size: 25px 25px;
-            pointer-events: none;
-            border-radius: inherit;
-            opacity: 0.6;
+            top: -35px;
+            right: 20px;
+            font-size: 3rem;
+            background: radial-gradient(circle, #c41e3a, #8b0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 8px rgba(139, 0, 0, 0.4));
+            z-index: 10;
+            animation: sealPulse 3s ease-in-out infinite;
         }
 
-        .photo-frame.style-ornate::after {
+        @keyframes sealPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .photo-frame.style-loveletter::after {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 3px double #8b6914;
-            border-radius: inherit;
+            top: -8px;
+            right: -8px;
+            bottom: -8px;
+            left: -8px;
+            border: 2px dashed rgba(139, 89, 42, 0.3);
+            border-radius: 10px;
             pointer-events: none;
+        }
+
+        /* Rose Garden Frame - Floral corners with roses */
+        .photo-frame.style-rosegarden {
+            border: 16px solid #fff;
+            background: linear-gradient(135deg, #ffebf0, #ffe0e9);
+            box-shadow:
+                inset 0 0 40px rgba(255, 105, 180, 0.2),
+                0 20px 60px rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .photo-frame.style-rosegarden::before {
+            content: '🌹';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+            z-index: 10;
+            animation: roseRotate 6s ease-in-out infinite;
+        }
+
+        .photo-frame.style-rosegarden::after {
+            content: '🌹';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+            z-index: 10;
+            transform: rotate(180deg);
+            animation: roseRotate 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes roseRotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        /* Heart Lace Frame - Delicate lace pattern */
+        .photo-frame.style-heartlace {
+            border: 20px solid #fff;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(255, 182, 193, 0.3), transparent),
+                linear-gradient(135deg, #fff5f8, #ffe4ec);
+            box-shadow:
+                inset 0 0 50px rgba(255, 105, 180, 0.15),
+                0 20px 60px rgba(0, 0, 0, 0.25);
+            position: relative;
+            border-radius: 25px;
+        }
+
+        .photo-frame.style-heartlace::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(255, 105, 180, 0.15) 2px, transparent 2px),
+                radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.15) 2px, transparent 2px),
+                radial-gradient(circle at 20% 80%, rgba(255, 105, 180, 0.15) 2px, transparent 2px),
+                radial-gradient(circle at 80% 80%, rgba(255, 105, 180, 0.15) 2px, transparent 2px);
+            background-size: 40px 40px;
+            border-radius: 30px;
+            pointer-events: none;
+            border: 3px solid rgba(255, 182, 193, 0.3);
+        }
+
+        .photo-frame.style-heartlace::after {
+            content: '💕';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8rem;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        /* Film Memory Frame - Classic film strip */
+        .photo-frame.style-filmmemory {
+            border: 0;
+            background: #1a1a1a;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            padding: 30px 15px;
+        }
+
+        .photo-frame.style-filmmemory::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    to right,
+                    transparent 0px,
+                    transparent 8px,
+                    #1a1a1a 8px,
+                    #1a1a1a 10px,
+                    #2a2a2a 10px,
+                    #2a2a2a 18px,
+                    #1a1a1a 18px,
+                    #1a1a1a 20px
+                ),
+                repeating-linear-gradient(
+                    to bottom,
+                    #2a2a2a 0px,
+                    #2a2a2a 25px,
+                    #1a1a1a 25px,
+                    #1a1a1a 30px
+                );
+            pointer-events: none;
+        }
+
+        .photo-frame.style-filmmemory::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 15px;
+            right: 15px;
+            bottom: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            pointer-events: none;
+        }
+
+        .photo-frame.style-filmmemory img {
+            border: 3px solid #2a2a2a;
         }
 
         .photo-frame:hover {
@@ -808,18 +906,53 @@
             transform: scale(1.2);
         }
 
-        .frame-style-btn.modern {
-            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        .frame-style-btn.loveletter {
+            background: linear-gradient(135deg, #fff9f0, #f5e6d3);
+            position: relative;
         }
-        .frame-style-btn.polaroid {
-            background: white;
-            border-bottom-width: 10px;
+        .frame-style-btn.loveletter::after {
+            content: '❤';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
         }
-        .frame-style-btn.vintage {
-            background: linear-gradient(135deg, #d4a373, #8b7355);
+        .frame-style-btn.rosegarden {
+            background: linear-gradient(135deg, #ffebf0, #ffe0e9);
+            position: relative;
         }
-        .frame-style-btn.ornate {
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
+        .frame-style-btn.rosegarden::after {
+            content: '🌹';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+        .frame-style-btn.heartlace {
+            background: linear-gradient(135deg, #fff5f8, #ffe4ec);
+            position: relative;
+        }
+        .frame-style-btn.heartlace::after {
+            content: '💕';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+        }
+        .frame-style-btn.filmmemory {
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            position: relative;
+        }
+        .frame-style-btn.filmmemory::after {
+            content: '🎞️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
         }
 
         /* Beautiful Caption Area */
@@ -1352,13 +1485,13 @@
                     </div>
 
                     <div class="frame-selector">
-                        <div class="frame-style-btn modern active" onclick="changeFrameStyle(${index}, 'modern')" title="Modern"></div>
-                        <div class="frame-style-btn polaroid" onclick="changeFrameStyle(${index}, 'polaroid')" title="Polaroid"></div>
-                        <div class="frame-style-btn vintage" onclick="changeFrameStyle(${index}, 'vintage')" title="Vintage"></div>
-                        <div class="frame-style-btn ornate" onclick="changeFrameStyle(${index}, 'ornate')" title="Ornate"></div>
+                        <div class="frame-style-btn loveletter active" onclick="changeFrameStyle(${index}, 'loveletter')" title="Love Letter"></div>
+                        <div class="frame-style-btn rosegarden" onclick="changeFrameStyle(${index}, 'rosegarden')" title="Rose Garden"></div>
+                        <div class="frame-style-btn heartlace" onclick="changeFrameStyle(${index}, 'heartlace')" title="Heart Lace"></div>
+                        <div class="frame-style-btn filmmemory" onclick="changeFrameStyle(${index}, 'filmmemory')" title="Film Memory"></div>
                     </div>
 
-                    <div class="photo-frame style-modern" id="frame${index}" onclick="openLightbox(${index})">
+                    <div class="photo-frame style-loveletter" id="frame${index}" onclick="openLightbox(${index})">
                         <div class="photo-placeholder" id="placeholder${index}">
                             <span>💝</span>
                             <p>Click to add photo</p>
@@ -1746,7 +1879,7 @@
                 const caption = card.querySelector('textarea');
                 const frame = card.querySelector('.photo-frame');
 
-                const frameStyle = frame.className.match(/style-(\w+)/)?.[1] || 'modern';
+                const frameStyle = frame.className.match(/style-(\w+)/)?.[1] || 'loveletter';
 
                 albumData.photos.push({
                     image: img.src,

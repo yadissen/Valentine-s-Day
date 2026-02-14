@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story - Valentine's Photo Album</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:wght@400;700&display=swap');
+
+        :root {
+            /* Warm Romantic Palette */
+            --primary-bg: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 50%, #ffd6dd 100%);
+            --card-bg: #ffffff;
+            --text-primary: #4a2c2a;
+            --text-secondary: #8b5a5a;
+            --accent-rose: #d4627e;
+            --accent-gold: #d4a574;
+            --warm-glow: rgba(212, 98, 126, 0.15);
+            --shadow-soft: rgba(139, 90, 90, 0.1);
+            --shadow-warm: rgba(212, 98, 126, 0.2);
+            --off-white: #fefdfb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: var(--primary-bg);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Elegant Floating Hearts */
+        .heart-float {
+            position: fixed;
+            font-size: 16px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatHeart 15s ease-in-out infinite;
+            color: var(--accent-rose);
+            filter: drop-shadow(0 2px 4px var(--warm-glow));
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(110vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.3;
+            }
+            85% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .heart-float:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 18s; }
+        .heart-float:nth-child(2) { left: 25%; animation-delay: 3s; animation-duration: 20s; }
+        .heart-float:nth-child(3) { left: 40%; animation-delay: 6s; animation-duration: 17s; }
+        .heart-float:nth-child(4) { left: 55%; animation-delay: 2s; animation-duration: 19s; }
+        .heart-float:nth-child(5) { left: 70%; animation-delay: 5s; animation-duration: 21s; }
+        .heart-float:nth-child(6) { left: 85%; animation-delay: 8s; animation-duration: 16s; }
+
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '♥';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            color: var(--accent-rose);
+            opacity: 0.25;
+            animation: heartbeat 2.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            30% { transform: translateX(-50%) scale(1.15); }
+            60% { transform: translateX(-50%) scale(1); }
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--accent-rose);
+            margin: 60px 0 20px;
+            text-shadow: 0 2px 8px var(--warm-glow);
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .main-title:hover {
+            color: var(--accent-gold);
+            text-shadow: 0 4px 16px var(--shadow-warm);
+        }
+
+        .subtitle {
+            font-family: 'Lora', serif;
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            opacity: 0.85;
+        }
+
+        .subtitle:hover {
+            color: var(--accent-rose);
+            opacity: 1;
+        }
+
+        /* Love Message */
+        .love-message {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px var(--shadow-soft);
+            border: 1px solid rgba(212, 98, 126, 0.15);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .love-message::before,
+        .love-message::after {
+            content: '"';
+            position: absolute;
+            font-size: 100px;
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-rose);
+            opacity: 0.08;
+            line-height: 1;
+        }
+
+        .love-message::before {
+            top: 15px;
+            left: 25px;
+        }
+
+        .love-message::after {
+            bottom: 15px;
+            right: 25px;
+        }
+
+        .love-message p {
+            font-size: 1.15em;
+            line-height: 1.9;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .love-message .signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--accent-rose);
+            font-size: 1.2em;
+            margin-top: 25px;
+        }
+
+        /* Professional Controls Bar */
+        .controls-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 16px;
+            padding: 35px 40px;
+            box-shadow: 0 8px 32px var(--shadow-soft);
+            border: 1px solid rgba(212, 98, 126, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .control-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .control-label {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* Custom File Upload */
+        .file-upload-wrapper {
+            position: relative;
+        }
+
+        .file-upload-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            background: white;
+            border: 2px solid var(--accent-rose);
+            border-radius: 8px;
+            color: var(--accent-rose);
+            font-family: 'Lora', serif;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .file-upload-btn:hover {
+            background: var(--accent-rose);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px var(--shadow-warm);
+        }
+
+        .file-upload-btn::before {
+            content: '📁';
+            font-size: 1.2em;
+        }
+
+        input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+
+        /* Theme & Filter Selectors */
+        .theme-grid,
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .theme-option,
+        .filter-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            box-shadow: 0 2px 8px var(--shadow-soft);
+        }
+
+        .theme-option:hover,
+        .filter-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow-warm);
+        }
+
+        .theme-option.active,
+        .filter-option.active {
+            border-color: var(--accent-rose);
+            box-shadow: 0 0 0 4px rgba(212, 98, 126, 0.15);
+        }
+
+        .theme-option::after,
+        .filter-option::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .theme-option:hover::after,
+        .filter-option:hover::after {
+            opacity: 1;
+        }
+
+        .theme-romantic { background: linear-gradient(135deg, #fff5f7, #ffd6dd); }
+        .theme-sunset { background: linear-gradient(135deg, #fff3e0, #ffccbc); }
+        .theme-lavender { background: linear-gradient(135deg, #f3e5f5, #e1bee7); }
+        .theme-sage { background: linear-gradient(135deg, #f1f8e9, #dcedc8); }
+
+        .filter-none { background: white; border: 2px solid #e5e5e5; }
+        .filter-warm { background: linear-gradient(135deg, #f5e6dc, #e8d4c4); }
+        .filter-soft { background: linear-gradient(135deg, #f8f4f0, #ede8e4); }
+        .filter-vintage { background: linear-gradient(135deg, #d4a574, #b88a5a); }
+
+        /* Frame Style Selector */
+        .frame-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .frame-option {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            box-shadow: 0 2px 8px var(--shadow-soft);
+            border: 3px solid transparent;
+        }
+
+        .frame-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px var(--shadow-warm);
+        }
+
+        .frame-option.active {
+            border-color: var(--accent-rose);
+            box-shadow: 0 0 0 4px rgba(212, 98, 126, 0.15);
+        }
+
+        .frame-matted {
+            background: linear-gradient(to bottom, white 40%, #f5f5f5 40%, #f5f5f5 60%, white 60%);
+        }
+
+        .frame-gold {
+            background: linear-gradient(135deg, #d4af37, #f4d1a6, #d4af37);
+        }
+
+        .frame-wood {
+            background: linear-gradient(135deg, #8b6f47, #6b5435);
+        }
+
+        .frame-gallery {
+            background: #3a3a3a;
+            border: 4px solid white;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(212, 98, 126, 0.1);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .action-btn {
+            padding: 14px 32px;
+            border: 2px solid var(--accent-rose);
+            background: transparent;
+            color: var(--accent-rose);
+            border-radius: 8px;
+            font-family: 'Libre Baskerville', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-rose);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .action-btn:hover::before {
+            left: 0;
+        }
+
+        .action-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px var(--shadow-warm);
+        }
+
+        .action-btn.secondary {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .action-btn.secondary::before {
+            background: var(--accent-gold);
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        /* Photo Card */
+        .photo-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: move;
+            position: relative;
+            border: 1px solid rgba(212, 98, 126, 0.1);
+        }
+
+        .photo-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent-rose), var(--accent-gold));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px var(--shadow-warm);
+        }
+
+        .photo-card:hover::before {
+            opacity: 0.5;
+        }
+
+        /* Photo Container */
+        .photo-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f9f9f9;
+            margin-bottom: 20px;
+        }
+
+        .photo-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.25), transparent 60%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .photo-card:hover .photo-container::after {
+            opacity: 1;
+        }
+
+        .photo-container img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .photo-card:hover .photo-container img {
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* Frame Styles */
+        .frame-matted .photo-container {
+            border: 15px solid white;
+            box-shadow: inset 0 0 0 1px #e5e5e5,
+                        0 0 0 1px #d4d4d4,
+                        0 4px 15px var(--shadow-soft);
+        }
+
+        .frame-gold .photo-container {
+            border: 12px solid;
+            border-image: linear-gradient(135deg, #d4a574, #f4d1a6, #d4a574) 1;
+            box-shadow: 0 0 20px var(--warm-glow),
+                        inset 0 0 20px rgba(212, 165, 116, 0.1);
+        }
+
+        .frame-wood .photo-container {
+            border: 10px solid #8b6f47;
+            box-shadow: 0 0 0 2px #6b5435,
+                        0 4px 15px var(--shadow-soft);
+        }
+
+        .frame-gallery .photo-container {
+            border: none;
+            box-shadow: 0 4px 20px var(--shadow-warm);
+        }
+
+        /* Filters */
+        .filter-warm {
+            filter: sepia(0.15) saturate(1.15) brightness(1.05);
+        }
+
+        .filter-soft {
+            filter: contrast(0.92) brightness(1.08) saturate(0.95);
+        }
+
+        .filter-vintage {
+            filter: sepia(0.35) contrast(1.1) brightness(0.95);
+        }
+
+        /* Caption */
+        .caption {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 12px;
+            min-height: 50px;
+            border: none;
+            background: transparent;
+            width: 100%;
+            transition: color 0.3s ease;
+            resize: none;
+        }
+
+        .caption:focus {
+            outline: none;
+            color: var(--accent-rose);
+        }
+
+        .caption::placeholder {
+            opacity: 0.5;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--accent-rose);
+            color: var(--accent-rose);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-weight: bold;
+        }
+
+        .photo-card:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .delete-btn:hover {
+            background: var(--accent-rose);
+            color: white;
+            transform: rotate(90deg) scale(1.15);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 44, 42, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--accent-rose);
+            color: var(--accent-rose);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--accent-rose);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev { left: -75px; }
+        .lightbox-next { right: -75px; }
+
+        .lightbox-close {
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            background: white;
+            border: 2px solid var(--accent-rose);
+            color: var(--accent-rose);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent-rose);
+            color: white;
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5em;
+            }
+
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 30px;
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .lightbox-close {
+                top: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .page-wrapper {
+                padding: 40px 20px;
+            }
+
+            .controls-wrapper {
+                padding: 25px 20px;
+            }
+        }
+
+        /* Print */
+        @media print {
+            .controls-wrapper,
+            .delete-btn,
+            .heart-float,
+            .action-buttons {
+                display: none !important;
+            }
+
+            .photo-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="heart-float">♥</div>
+    <div class="heart-float">♥</div>
+    <div class="heart-float">♥</div>
+    <div class="heart-float">♥</div>
+    <div class="heart-float">♥</div>
+    <div class="heart-float">♥</div>
+
+    <div class="page-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title" contenteditable="true" id="mainTitle">Our Love Story</h1>
+            <p class="subtitle" contenteditable="true" id="subtitle">Every moment with you is my favorite memory</p>
+        </div>
+
+        <!-- Love Message -->
+        <div class="love-message">
+            <p>In every photograph, I see not just a moment frozen in time, but a heartbeat of our journey together. Each smile, each glance, each shared laugh is a testament to the love we've built.</p>
+            <p>You are my today and all of my tomorrows.</p>
+            <p class="signature">Forever yours ♥</p>
+        </div>
+
+        <!-- Professional Controls -->
+        <div class="controls-wrapper">
+            <div class="controls-grid">
+                <!-- Upload Section -->
+                <div class="control-section">
+                    <div class="control-label">Add Photos</div>
+                    <div class="file-upload-wrapper">
+                        <div class="file-upload-btn">Upload</div>
+                        <input type="file" id="photoInput" accept="image/*" multiple>
+                    </div>
+                </div>
+
+                <!-- Theme Section -->
+                <div class="control-section">
+                    <div class="control-label">Theme</div>
+                    <div class="theme-grid">
+                        <div class="theme-option theme-romantic active" data-name="Romantic" data-theme="romantic"></div>
+                        <div class="theme-option theme-sunset" data-name="Sunset" data-theme="sunset"></div>
+                        <div class="theme-option theme-lavender" data-name="Lavender" data-theme="lavender"></div>
+                        <div class="theme-option theme-sage" data-name="Sage" data-theme="sage"></div>
+                    </div>
+                </div>
+
+                <!-- Frame Section -->
+                <div class="control-section">
+                    <div class="control-label">Frame Style</div>
+                    <div class="frame-grid">
+                        <div class="frame-option frame-matted active" data-frame="matted"></div>
+                        <div class="frame-option frame-gold" data-frame="gold"></div>
+                        <div class="frame-option frame-wood" data-frame="wood"></div>
+                        <div class="frame-option frame-gallery" data-frame="gallery"></div>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="control-section">
+                    <div class="control-label">Filter</div>
+                    <div class="filter-grid">
+                        <div class="filter-option filter-none active" data-name="None" data-filter="none"></div>
+                        <div class="filter-option filter-warm" data-name="Warm" data-filter="warm"></div>
+                        <div class="filter-option filter-soft" data-name="Soft" data-filter="soft"></div>
+                        <div class="filter-option filter-vintage" data-name="Vintage" data-filter="vintage"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn" id="slideshowBtn">▶ Slideshow</button>
+                <button class="action-btn secondary" id="exportBtn">📄 Export PDF</button>
+                <button class="action-btn secondary" id="clearBtn">Clear All</button>
+            </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="gallery" id="gallery"></div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImg">
+            <button class="lightbox-close" id="lightboxClose">×</button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        // State
+        let photos = [];
+        let currentFrame = 'matted';
+        let currentFilter = 'none';
+        let currentTheme = 'romantic';
+        let lightboxIndex = 0;
+        let slideshowInterval = null;
+
+        // Theme configurations
+        const themes = {
+            romantic: 'linear-gradient(135deg, #fff5f7 0%, #ffe8ec 50%, #ffd6dd 100%)',
+            sunset: 'linear-gradient(135deg, #fff3e0 0%, #ffe0b2 50%, #ffccbc 100%)',
+            lavender: 'linear-gradient(135deg, #f3e5f5 0%, #e1bee7 50%, #ce93d8 100%)',
+            sage: 'linear-gradient(135deg, #f1f8e9 0%, #dcedc8 50%, #c5e1a5 100%)'
+        };
+
+        // Load saved data
+        function loadData() {
+            const saved = localStorage.getItem('valentineAlbumFinal');
+            if (saved) {
+                const data = JSON.parse(saved);
+                photos = data.photos || [];
+                currentFrame = data.frame || 'matted';
+                currentFilter = data.filter || 'none';
+                currentTheme = data.theme || 'romantic';
+                document.getElementById('mainTitle').textContent = data.title || 'Our Love Story';
+                document.getElementById('subtitle').textContent = data.subtitle || 'Every moment with you is my favorite memory';
+
+                applyTheme(currentTheme);
+                renderGallery();
+            }
+        }
+
+        // Save data
+        function saveData() {
+            const data = {
+                photos,
+                frame: currentFrame,
+                filter: currentFilter,
+                theme: currentTheme,
+                title: document.getElementById('mainTitle').textContent,
+                subtitle: document.getElementById('subtitle').textContent
+            };
+            localStorage.setItem('valentineAlbumFinal', JSON.stringify(data));
+        }
+
+        // Apply theme
+        function applyTheme(themeName) {
+            currentTheme = themeName;
+            document.body.style.background = themes[themeName];
+            document.body.style.backgroundAttachment = 'fixed';
+
+            document.querySelectorAll('.theme-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.theme === themeName);
+            });
+
+            saveData();
+        }
+
+        // Add photos
+        document.getElementById('photoInput').addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        photos.push({
+                            id: Date.now() + Math.random(),
+                            src: event.target.result,
+                            caption: '',
+                            frame: currentFrame
+                        });
+                        renderGallery();
+                        saveData();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            e.target.value = '';
+        });
+
+        // Render gallery
+        function renderGallery() {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+
+            photos.forEach((photo, index) => {
+                const card = document.createElement('div');
+                card.className = `photo-card frame-${photo.frame || currentFrame}`;
+                card.draggable = true;
+                card.dataset.index = index;
+
+                const filterClass = currentFilter !== 'none' ? `filter-${currentFilter}` : '';
+
+                card.innerHTML = `
+                    <div class="photo-container">
+                        <img src="${photo.src}" alt="${photo.caption}" class="${filterClass}">
+                    </div>
+                    <textarea class="caption" placeholder="Add a memory..." data-id="${photo.id}">${photo.caption}</textarea>
+                    <button class="delete-btn" data-id="${photo.id}">×</button>
+                `;
+
+                gallery.appendChild(card);
+            });
+
+            setupEventListeners();
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Caption editing
+            document.querySelectorAll('.caption').forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const photo = photos.find(p => p.id == e.target.dataset.id);
+                    if (photo) {
+                        photo.caption = e.target.value;
+                        saveData();
+                    }
+                });
+            });
+
+            // Delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (confirm('Remove this photo from your album?')) {
+                        photos = photos.filter(p => p.id != btn.dataset.id);
+                        renderGallery();
+                        saveData();
+                    }
+                });
+            });
+
+            // Lightbox
+            document.querySelectorAll('.photo-container img').forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+            });
+
+            // Drag and drop
+            document.querySelectorAll('.photo-card').forEach(card => {
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragover', handleDragOver);
+                card.addEventListener('drop', handleDrop);
+                card.addEventListener('dragend', handleDragEnd);
+            });
+        }
+
+        // Drag and drop handlers
+        let draggedElement = null;
+
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.style.opacity = '0.5';
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+
+            if (draggedElement !== this) {
+                const fromIndex = parseInt(draggedElement.dataset.index);
+                const toIndex = parseInt(this.dataset.index);
+
+                const [movedPhoto] = photos.splice(fromIndex, 1);
+                photos.splice(toIndex, 0, movedPhoto);
+
+                renderGallery();
+                saveData();
+            }
+
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.style.opacity = '1';
+        }
+
+        // Lightbox
+        function openLightbox(index) {
+            lightboxIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function updateLightbox() {
+            const img = document.getElementById('lightboxImg');
+            img.src = photos[lightboxIndex].src;
+            img.className = currentFilter !== 'none' ? `filter-${currentFilter}` : '';
+        }
+
+        document.getElementById('lightboxClose').addEventListener('click', () => {
+            document.getElementById('lightbox').classList.remove('active');
+        });
+
+        document.getElementById('lightboxPrev').addEventListener('click', () => {
+            lightboxIndex = (lightboxIndex - 1 + photos.length) % photos.length;
+            updateLightbox();
+        });
+
+        document.getElementById('lightboxNext').addEventListener('click', () => {
+            lightboxIndex = (lightboxIndex + 1) % photos.length;
+            updateLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    lightboxIndex = (lightboxIndex - 1 + photos.length) % photos.length;
+                    updateLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    lightboxIndex = (lightboxIndex + 1) % photos.length;
+                    updateLightbox();
+                } else if (e.key === 'Escape') {
+                    document.getElementById('lightbox').classList.remove('active');
+                }
+            }
+        });
+
+        // Theme selector
+        document.querySelectorAll('.theme-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                applyTheme(opt.dataset.theme);
+            });
+        });
+
+        // Frame selector
+        document.querySelectorAll('.frame-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                currentFrame = opt.dataset.frame;
+                document.querySelectorAll('.frame-option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                renderGallery();
+                saveData();
+            });
+        });
+
+        // Filter selector
+        document.querySelectorAll('.filter-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                currentFilter = opt.dataset.filter;
+                document.querySelectorAll('.filter-option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+                renderGallery();
+                saveData();
+            });
+        });
+
+        // Slideshow
+        document.getElementById('slideshowBtn').addEventListener('click', () => {
+            if (photos.length === 0) {
+                alert('Add some photos first!');
+                return;
+            }
+
+            const btn = document.getElementById('slideshowBtn');
+
+            if (slideshowInterval) {
+                clearInterval(slideshowInterval);
+                slideshowInterval = null;
+                btn.textContent = '▶ Slideshow';
+                document.getElementById('lightbox').classList.remove('active');
+            } else {
+                lightboxIndex = 0;
+                openLightbox(0);
+                btn.textContent = '⏸ Stop';
+
+                slideshowInterval = setInterval(() => {
+                    lightboxIndex = (lightboxIndex + 1) % photos.length;
+                    updateLightbox();
+                }, 3000);
+            }
+        });
+
+        // Export PDF
+        document.getElementById('exportBtn').addEventListener('click', async () => {
+            if (photos.length === 0) {
+                alert('Add some photos first!');
+                return;
+            }
+
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            const pageWidth = pdf.internal.pageSize.getWidth();
+            const pageHeight = pdf.internal.pageSize.getHeight();
+            const margin = 20;
+            const maxWidth = pageWidth - (margin * 2);
+            const maxHeight = pageHeight - (margin * 3);
+
+            // Title page
+            pdf.setFontSize(28);
+            pdf.text(document.getElementById('mainTitle').textContent, pageWidth / 2, 80, { align: 'center' });
+
+            pdf.setFontSize(14);
+            pdf.text(document.getElementById('subtitle').textContent, pageWidth / 2, 100, { align: 'center' });
+
+            // Photos
+            for (let i = 0; i < photos.length; i++) {
+                pdf.addPage();
+
+                try {
+                    const img = new Image();
+                    img.src = photos[i].src;
+                    await new Promise((resolve) => {
+                        img.onload = resolve;
+                    });
+
+                    const imgWidth = img.width;
+                    const imgHeight = img.height;
+                    const ratio = Math.min(maxWidth / imgWidth, maxHeight / imgHeight);
+                    const width = imgWidth * ratio;
+                    const height = imgHeight * ratio;
+                    const x = (pageWidth - width) / 2;
+                    const y = margin;
+
+                    pdf.addImage(photos[i].src, 'JPEG', x, y, width, height);
+
+                    if (photos[i].caption) {
+                        pdf.setFontSize(12);
+                        pdf.text(photos[i].caption, pageWidth / 2, y + height + 15, { align: 'center' });
+                    }
+                } catch (error) {
+                    console.error('Error adding photo to PDF:', error);
+                }
+            }
+
+            const title = document.getElementById('mainTitle').textContent.replace(/[^a-z0-9]/gi, '_');
+            pdf.save(`${title}_Valentine.pdf`);
+        });
+
+        // Clear all
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to remove all photos? This cannot be undone.')) {
+                photos = [];
+                renderGallery();
+                saveData();
+            }
+        });
+
+        // Title/subtitle editing
+        document.getElementById('mainTitle').addEventListener('input', saveData);
+        document.getElementById('subtitle').addEventListener('input', saveData);
+
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>

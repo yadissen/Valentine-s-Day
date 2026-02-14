@@ -429,36 +429,6 @@
         .filter-romantic { background: linear-gradient(135deg, #ffb3ba, #ff6b9d); }
         .filter-dreamy { background: linear-gradient(135deg, #c3cfe2, #a8d0e6, #f8b500); }
 
-        /* Elegant Stats Bar */
-        .stats-bar {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.4rem;
-            animation: fadeIn 1.2s ease 0.6s backwards;
-        }
-
-        .stats-bar span {
-            display: inline-block;
-            margin: 0 25px;
-            font-family: 'Cinzel', serif;
-            color: rgba(44, 62, 80, 0.8);
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 12px 30px;
-            border-radius: 50px;
-            box-shadow:
-                0 4px 20px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .stats-bar span:hover {
-            transform: translateY(-3px);
-            box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
-        }
-
         /* Premium Album Grid */
         .album-grid {
             display: grid;
@@ -1326,11 +1296,10 @@
                 <div class="filter-btn filter-romantic" onclick="changeFilter('romantic')" title="Romantic"></div>
                 <div class="filter-btn filter-dreamy" onclick="changeFilter('dreamy')" title="Dreamy"></div>
             </div>
-        </div>
 
-        <!-- Elegant Stats -->
-        <div class="stats-bar">
-            <span>💝 <span id="photoCount">0</span> Precious Memories</span>
+            <div class="toolbar-group">
+                <span class="toolbar-label">💝 <span id="photoCount">0</span> Precious Memories</span>
+            </div>
         </div>
 
         <!-- Premium Album Grid -->

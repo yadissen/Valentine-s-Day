@@ -21,11 +21,14 @@
             --deep-wine: #8b5a5a;
             --charcoal: #3a3a3a;
             --off-white: #fefdfb;
+            /* Warm gradient background */
+            --warm-gradient: linear-gradient(135deg, #faf8f3 0%, #f5ebe5 30%, #f0e4dc 60%, #ecddd4 100%);
         }
 
         body {
             font-family: 'Crimson Pro', 'Georgia', serif;
-            background: var(--cream);
+            background: var(--warm-gradient);
+            background-attachment: fixed;
             color: var(--charcoal);
             line-height: 1.7;
             min-height: 100vh;
